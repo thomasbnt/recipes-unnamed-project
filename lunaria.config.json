@@ -1,0 +1,6 @@
+{
+  "$schema": "./node_modules/@lunariajs/core/config.schema.json",
+  "repository": {
+    "name": "thomasbnt/recipes-unnamed-project"
+  }
+}
