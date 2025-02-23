@@ -1,8 +1,17 @@
 {
   "$schema": "./node_modules/@lunariajs/core/config.schema.json",
   "repository": {
-    "name": "thomasbnt/recipes-unnamed-project"
+    "name": "thomasbnt/recipes-unnamed-project",
+    "hosting": "github"
   },
+  "files": [
+    {
+      "location": "src/content/docs/**/*.{md,mdx}",
+      "pattern": "src/content/docs/@lang/@path",
+      "type": "universal"
+    }
+  ],
+  "outDir": "./lunaria",
   "defaultLocale": {
     "lang": "en",
     "label": "English"
@@ -15,13 +24,6 @@
     {
       "lang": "fr",
       "label": "Français"
-    }
-  ],
-  "files": [
-    {
-      "location": "src/content/docs/**/*.{md,mdx}",
-      "pattern": "src/content/docs/@lang/@path",
-      "type": "universal"
     }
   ],
   "ignoreKeywords": [
