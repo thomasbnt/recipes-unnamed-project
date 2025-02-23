@@ -2,5 +2,34 @@
   "$schema": "./node_modules/@lunariajs/core/config.schema.json",
   "repository": {
     "name": "thomasbnt/recipes-unnamed-project"
+  },
+  "defaultLocale": {
+    "lang": "en",
+    "label": "English"
+  },
+  "locales": [
+    {
+      "lang": "en",
+      "label": "English"
+    },
+    {
+      "lang": "fr",
+      "label": "Français"
+    }
+  ],
+  "files": [
+    {
+      "location": "src/content/docs/**/*.{md,mdx}",
+      "pattern": "src/content/docs/@lang/@path",
+      "type": "universal"
+    }
+  ],
+  "ignoreKeywords": [
+    "i18nIgnore",
+    "fr-only"
+  ],
+  "dashboard": {
+    "title": "Localization",
+    "description": "Page preview for the localization."
   }
 }
