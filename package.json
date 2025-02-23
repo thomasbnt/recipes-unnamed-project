@@ -7,10 +7,14 @@
     "start": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
-    "astro": "astro"
+    "astro": "astro",
+    "lunaria:build": "lunaria build",
+    "lunaria:preview": "lunaria preview"
   },
   "dependencies": {
     "@astrojs/starlight": "^0.32.1",
+    "@lunariajs/core": "^0.1.1",
+    "@lunariajs/starlight": "^0.1.1",
     "astro": "^5.1.5",
     "sharp": "^0.32.5"
   },
