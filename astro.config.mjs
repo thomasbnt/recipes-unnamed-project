@@ -34,7 +34,7 @@ export default defineConfig({
 					items: [
 						{ 
 							label: 'Welcome', 
-							slug: 'index',
+							slug: 'welcome',
 							translations: {
 								fr: 'Bienvenue',
 							},
