@@ -1,0 +1,337 @@
+---
+// Enhanced Recipe Calculator Component
+interface Props {
+  baseServings?: number;
+  maxServings?: number;
+  minServings?: number;
+}
+
+const { 
+  baseServings = 4, 
+  maxServings = 12, 
+  minServings = 1 
+} = Astro.props;
+---
+
+<div class="recipe-calculator">
+  <div class="calculator-header">
+    <h3>🧮 Calculateur de portions</h3>
+    <p>Ajustez automatiquement tous les ingrédients selon vos besoins</p>
+  </div>
+  
+  <div class="calculator-controls">
+    <div class="serving-adjuster">
+      <label for="serving-input">Nombre de portions :</label>
+      <div class="serving-controls">
+        <button type="button" class="serving-btn decrease" id="decrease-servings" aria-label="Diminuer les portions">
+          <span>−</span>
+        </button>
+        <input 
+          type="number" 
+          id="serving-input" 
+          class="serving-input" 
+          value={baseServings}
+          min={minServings}
+          max={maxServings}
+          aria-label="Nombre de portions"
+        />
+        <button type="button" class="serving-btn increase" id="increase-servings" aria-label="Augmenter les portions">
+          <span>+</span>
+        </button>
+      </div>
+    </div>
+    
+    <div class="calculator-info">
+      <div class="info-item">
+        <span class="info-label">Portions originales :</span>
+        <span class="info-value" id="base-servings">{baseServings}</span>
+      </div>
+      <div class="info-item">
+        <span class="info-label">Facteur de multiplication :</span>
+        <span class="info-value" id="multiplier">1.0x</span>
+      </div>
+    </div>
+  </div>
+  
+  <div class="calculator-tips">
+    <h4>💡 Conseils de conversion</h4>
+    <ul>
+      <li>Les temps de cuisson peuvent nécessiter des ajustements pour de grandes quantités</li>
+      <li>La taille des casseroles et plats de cuisson peut devoir être adaptée</li>
+      <li>Goûtez et ajustez les assaisonnements selon vos préférences</li>
+    </ul>
+  </div>
+</div>
+
+<style>
+  .recipe-calculator {
+    background: var(--sl-color-bg-nav);
+    border: 2px solid var(--sl-color-accent-low);
+    border-radius: 16px;
+    padding: 2rem;
+    margin: 2rem 0;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  }
+  
+  .calculator-header {
+    text-align: center;
+    margin-bottom: 1.5rem;
+  }
+  
+  .calculator-header h3 {
+    margin: 0 0 0.5rem 0;
+    color: var(--sl-color-accent);
+    font-size: 1.3rem;
+  }
+  
+  .calculator-header p {
+    margin: 0;
+    color: var(--sl-color-gray-2);
+    font-size: 0.9rem;
+  }
+  
+  .calculator-controls {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    align-items: start;
+  }
+  
+  .serving-adjuster label {
+    display: block;
+    font-weight: 600;
+    color: var(--sl-color-white);
+    margin-bottom: 0.75rem;
+    font-size: 1rem;
+  }
+  
+  .serving-controls {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    justify-content: center;
+  }
+  
+  .serving-btn {
+    background: var(--sl-color-accent);
+    color: var(--sl-color-accent-low);
+    border: none;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    font-size: 1.4rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .serving-btn:hover {
+    background: var(--sl-color-accent-high);
+    transform: scale(1.05);
+  }
+  
+  .serving-btn:active {
+    transform: scale(0.95);
+  }
+  
+  .serving-btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    transform: none;
+  }
+  
+  .serving-input {
+    width: 80px;
+    padding: 0.75rem;
+    border: 2px solid var(--sl-color-gray-5);
+    border-radius: 8px;
+    background: var(--sl-color-bg);
+    color: var(--sl-color-white);
+    font-size: 1.1rem;
+    font-weight: 600;
+    text-align: center;
+    transition: border-color 0.2s ease;
+  }
+  
+  .serving-input:focus {
+    outline: none;
+    border-color: var(--sl-color-accent);
+    box-shadow: 0 0 0 3px var(--sl-color-accent-low);
+  }
+  
+  .calculator-info {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+  
+  .info-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.5rem 0;
+    border-bottom: 1px solid var(--sl-color-gray-6);
+  }
+  
+  .info-item:last-child {
+    border-bottom: none;
+  }
+  
+  .info-label {
+    color: var(--sl-color-gray-2);
+    font-size: 0.9rem;
+  }
+  
+  .info-value {
+    color: var(--sl-color-accent);
+    font-weight: 600;
+    font-size: 1rem;
+  }
+  
+  .calculator-tips {
+    margin-top: 1.5rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--sl-color-gray-6);
+  }
+  
+  .calculator-tips h4 {
+    margin: 0 0 1rem 0;
+    color: var(--sl-color-white);
+    font-size: 1rem;
+  }
+  
+  .calculator-tips ul {
+    margin: 0;
+    padding-left: 1.5rem;
+    color: var(--sl-color-gray-2);
+    font-size: 0.9rem;
+    line-height: 1.5;
+  }
+  
+  .calculator-tips li {
+    margin-bottom: 0.5rem;
+  }
+  
+  @media (max-width: 768px) {
+    .calculator-controls {
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+    }
+    
+    .recipe-calculator {
+      padding: 1.5rem;
+    }
+  }
+</style>
+
+<script define:vars={{ baseServings, maxServings, minServings }}>
+  document.addEventListener('DOMContentLoaded', function() {
+    let currentServings = baseServings;
+    
+    const servingInput = document.getElementById('serving-input');
+    const decreaseBtn = document.getElementById('decrease-servings');
+    const increaseBtn = document.getElementById('increase-servings');
+    const baseServingsDisplay = document.getElementById('base-servings');
+    const multiplierDisplay = document.getElementById('multiplier');
+    
+    // Update all recipe amounts
+    function updateRecipeAmounts() {
+      const multiplier = currentServings / baseServings;
+      const amounts = document.querySelectorAll('.recipe-amount');
+      const currentServingsDisplays = document.querySelectorAll('.current-servings');
+      
+      // Update multiplier display
+      if (multiplierDisplay) {
+        multiplierDisplay.textContent = multiplier.toFixed(1) + 'x';
+      }
+      
+      // Update current servings displays
+      currentServingsDisplays.forEach(display => {
+        display.textContent = currentServings;
+      });
+      
+      // Update ingredient amounts
+      amounts.forEach(amount => {
+        const baseAmount = parseFloat(amount.dataset.base);
+        if (isNaN(baseAmount)) return;
+        
+        const newAmount = baseAmount * multiplier;
+        
+        // Format the amount nicely
+        if (newAmount < 1 && newAmount > 0) {
+          // Convert to common fractions for small amounts
+          if (Math.abs(newAmount - 0.25) < 0.01) amount.textContent = '¼';
+          else if (Math.abs(newAmount - 0.33) < 0.01) amount.textContent = '⅓';
+          else if (Math.abs(newAmount - 0.5) < 0.01) amount.textContent = '½';
+          else if (Math.abs(newAmount - 0.67) < 0.01) amount.textContent = '⅔';
+          else if (Math.abs(newAmount - 0.75) < 0.01) amount.textContent = '¾';
+          else amount.textContent = newAmount.toFixed(2);
+        } else if (newAmount % 1 === 0) {
+          amount.textContent = Math.round(newAmount);
+        } else {
+          amount.textContent = newAmount.toFixed(1);
+        }
+      });
+      
+      // Dispatch custom event for other components
+      window.dispatchEvent(new CustomEvent('recipePortionsChanged', {
+        detail: { servings: currentServings, multiplier: multiplier }
+      }));
+    }
+    
+    // Update button states
+    function updateButtonStates() {
+      if (decreaseBtn) {
+        decreaseBtn.disabled = currentServings <= minServings;
+      }
+      if (increaseBtn) {
+        increaseBtn.disabled = currentServings >= maxServings;
+      }
+    }
+    
+    // Handle decrease button
+    decreaseBtn?.addEventListener('click', () => {
+      if (currentServings > minServings) {
+        currentServings--;
+        servingInput.value = currentServings;
+        updateRecipeAmounts();
+        updateButtonStates();
+      }
+    });
+    
+    // Handle increase button
+    increaseBtn?.addEventListener('click', () => {
+      if (currentServings < maxServings) {
+        currentServings++;
+        servingInput.value = currentServings;
+        updateRecipeAmounts();
+        updateButtonStates();
+      }
+    });
+    
+    // Handle direct input
+    servingInput?.addEventListener('input', (e) => {
+      const value = parseInt(e.target.value);
+      if (value >= minServings && value <= maxServings) {
+        currentServings = value;
+        updateRecipeAmounts();
+        updateButtonStates();
+      }
+    });
+    
+    // Handle input blur to ensure valid value
+    servingInput?.addEventListener('blur', (e) => {
+      const value = parseInt(e.target.value);
+      if (isNaN(value) || value < minServings || value > maxServings) {
+        e.target.value = currentServings;
+      }
+    });
+    
+    // Initial setup
+    updateButtonStates();
+    updateRecipeAmounts();
+  });
+</script>
