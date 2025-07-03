@@ -7,16 +7,39 @@ import lunaria from '@lunariajs/starlight';
 export default defineConfig({
 	integrations: [
 		starlight({
-			title: 'My Docs',
+			title: 'Recipe Collection',
+			description: 'A modern recipe collection with interactive features',
 			social: {
 				github: 'https://github.com/thomasbnt/recipes-unnamed-project',
 			},
+			customCss: [
+				'./src/styles/custom.css',
+			],
 			sidebar: [
 				{
-					label: 'Guides',
+					label: 'Getting Started',
 					items: [
-						// Each item here is one entry in the navigation menu.
-						{ label: 'Example Guide', slug: 'guides/example' },
+						{ label: 'Welcome', slug: 'index' },
+						{ label: 'How to Use', slug: 'guides/how-to-use' },
+					],
+				},
+				{
+					label: 'Recipes',
+					items: [
+						{ label: 'All Recipes', slug: 'recipes' },
+						{ label: 'Appetizers', slug: 'recipes/appetizers' },
+						{ label: 'Main Courses', slug: 'recipes/main-courses' },
+						{ label: 'Desserts', slug: 'recipes/desserts' },
+						{ label: 'Beverages', slug: 'recipes/beverages' },
+					],
+				},
+				{
+					label: 'Categories',
+					items: [
+						{ label: 'Quick & Easy', slug: 'categories/quick-easy' },
+						{ label: 'Vegetarian', slug: 'categories/vegetarian' },
+						{ label: 'Gluten-Free', slug: 'categories/gluten-free' },
+						{ label: 'Healthy', slug: 'categories/healthy' },
 					],
 				},
 				{

@@ -1,16 +1,80 @@
 ---
-title: Welcome to the Unnamed project!
-description: Get started building your docs site with Starlight.
+title: Welcome to Recipe Collection
+description: Discover amazing recipes with interactive features and smart filtering.
 template: splash
 hero:
-  tagline: Congrats on setting up a new Starlight project!
+  tagline: Your personal cookbook with smart features for modern cooking!
+  image:
+    file: ../../assets/houston.webp
   actions:
-    - text: See recipes
+    - text: Browse All Recipes
       link: /recipes/
       icon: right-arrow
-    - text: Read the Starlight docs
-      link: https://starlight.astro.build
-      icon: external
-      variant: minimal
+      variant: primary
+    - text: Quick & Easy Recipes
+      link: /categories/quick-easy/
+      icon: rocket
+      variant: secondary
 ---
 
+import { Card, CardGrid } from '@astrojs/starlight/components';
+
+## Why Choose Our Recipe Collection?
+
+<CardGrid>
+  <Card title="🔍 Smart Filtering" icon="magnifier">
+    Filter recipes by cooking time, difficulty, dietary preferences, and ingredients.
+  </Card>
+  <Card title="📏 Portion Adjustment" icon="setting">
+    Automatically scale ingredients up or down based on the number of servings you need.
+  </Card>
+  <Card title="✅ Interactive Ingredients" icon="list-format">
+    Check off ingredients as you cook with our interactive ingredient lists.
+  </Card>
+  <Card title="⏱️ Cooking Timers" icon="clock">
+    Built-in timers and step-by-step instructions to guide you through each recipe.
+  </Card>
+  <Card title="🏷️ Smart Categories" icon="tag">
+    Organized by meal type, dietary restrictions, and cooking methods.
+  </Card>
+  <Card title="📱 Mobile Friendly" icon="mobile">
+    Perfect for cooking on-the-go with responsive design and touch-friendly controls.
+  </Card>
+</CardGrid>
+
+## Featured Recipe Categories
+
+<CardGrid>
+  <Card title="Quick & Easy" icon="rocket">
+    Recipes ready in 30 minutes or less
+    
+    [View Quick Recipes →](/categories/quick-easy/)
+  </Card>
+  <Card title="Vegetarian" icon="heart">
+    Plant-based delicious meals
+    
+    [View Vegetarian →](/categories/vegetarian/)
+  </Card>
+  <Card title="Healthy" icon="star">
+    Nutritious and balanced recipes
+    
+    [View Healthy Recipes →](/categories/healthy/)
+  </Card>
+  <Card title="Desserts" icon="trophy">
+    Sweet treats and indulgent desserts
+    
+    [View Desserts →](/recipes/desserts/)
+  </Card>
+</CardGrid>
+
+## Getting Started
+
+1. **Browse Recipes**: Start by exploring our [recipe collection](/recipes/) or use the smart filters to find exactly what you're looking for.
+
+2. **Adjust Portions**: Use the portion adjuster on any recipe to scale ingredients for your needs.
+
+3. **Cook Interactively**: Check off ingredients and follow step-by-step instructions with built-in timers.
+
+4. **Save Favorites**: Bookmark your favorite recipes for quick access later.
+
+Ready to start cooking? [Explore all recipes →](/recipes/)

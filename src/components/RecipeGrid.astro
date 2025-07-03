@@ -1,0 +1,510 @@
+---
+// Recipe Grid Component with Filtering
+---
+
+<div class="recipe-app">
+  <div class="filter-controls">
+    <h3>Find Your Perfect Recipe</h3>
+    <div class="filter-row">
+      <div class="filter-group">
+        <label for="search">Search Recipes</label>
+        <input 
+          type="text" 
+          id="search" 
+          class="filter-input" 
+          placeholder="Search by name or ingredient..."
+        />
+      </div>
+      <div class="filter-group">
+        <label for="time">Max Cooking Time</label>
+        <select id="time" class="filter-input">
+          <option value="">Any time</option>
+          <option value="15">15 minutes</option>
+          <option value="30">30 minutes</option>
+          <option value="60">1 hour</option>
+          <option value="120">2 hours</option>
+        </select>
+      </div>
+      <div class="filter-group">
+        <label for="difficulty">Difficulty</label>
+        <select id="difficulty" class="filter-input">
+          <option value="">Any level</option>
+          <option value="easy">Easy</option>
+          <option value="medium">Medium</option>
+          <option value="hard">Hard</option>
+        </select>
+      </div>
+    </div>
+    <div class="filter-row">
+      <div class="filter-group">
+        <label>Dietary Preferences</label>
+        <div class="filter-tags">
+          <button class="filter-tag" data-filter="vegetarian">Vegetarian</button>
+          <button class="filter-tag" data-filter="vegan">Vegan</button>
+          <button class="filter-tag" data-filter="gluten-free">Gluten-Free</button>
+          <button class="filter-tag" data-filter="dairy-free">Dairy-Free</button>
+          <button class="filter-tag" data-filter="low-carb">Low-Carb</button>
+          <button class="filter-tag" data-filter="keto">Keto</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="recipe-results">
+    <p class="results-count">Showing <span id="results-count">12</span> recipes</p>
+  </div>
+
+  <div class="recipe-grid" id="recipe-grid">
+    <!-- Sample Recipe Cards -->
+    <div class="recipe-card" data-time="25" data-difficulty="easy" data-tags="vegetarian,gluten-free">
+      <img src="https://images.pexels.com/photos/1640777/pexels-photo-1640777.jpeg?auto=compress&cs=tinysrgb&w=400" alt="Mediterranean Quinoa Bowl" class="recipe-card-image" />
+      <div class="recipe-card-content">
+        <h3 class="recipe-card-title">Mediterranean Quinoa Bowl</h3>
+        <p class="recipe-card-description">A fresh and healthy bowl packed with quinoa, vegetables, and Mediterranean flavors.</p>
+        <div class="recipe-meta">
+          <div class="recipe-meta-item">
+            <span>⏱️</span>
+            <span>25 min</span>
+          </div>
+          <div class="recipe-meta-item">
+            <span>👨‍🍳</span>
+            <span>Easy</span>
+          </div>
+          <div class="recipe-meta-item">
+            <span>🍽️</span>
+            <span>4 servings</span>
+          </div>
+        </div>
+        <div class="recipe-tags">
+          <span class="recipe-tag">Vegetarian</span>
+          <span class="recipe-tag">Gluten-Free</span>
+          <span class="recipe-tag">Healthy</span>
+        </div>
+        <a href="/recipes/mediterranean-quinoa-bowl/" class="recipe-link">View Recipe →</a>
+      </div>
+    </div>
+
+    <div class="recipe-card" data-time="45" data-difficulty="medium" data-tags="comfort-food">
+      <img src="https://images.pexels.com/photos/2474661/pexels-photo-2474661.jpeg?auto=compress&cs=tinysrgb&w=400" alt="Classic Beef Stew" class="recipe-card-image" />
+      <div class="recipe-card-content">
+        <h3 class="recipe-card-title">Classic Beef Stew</h3>
+        <p class="recipe-card-description">Tender beef and vegetables in a rich, savory broth. Perfect comfort food for cold days.</p>
+        <div class="recipe-meta">
+          <div class="recipe-meta-item">
+            <span>⏱️</span>
+            <span>45 min</span>
+          </div>
+          <div class="recipe-meta-item">
+            <span>👨‍🍳</span>
+            <span>Medium</span>
+          </div>
+          <div class="recipe-meta-item">
+            <span>🍽️</span>
+            <span>6 servings</span>
+          </div>
+        </div>
+        <div class="recipe-tags">
+          <span class="recipe-tag">Comfort Food</span>
+          <span class="recipe-tag">One Pot</span>
+        </div>
+        <a href="/recipes/classic-beef-stew/" class="recipe-link">View Recipe →</a>
+      </div>
+    </div>
+
+    <div class="recipe-card" data-time="15" data-difficulty="easy" data-tags="vegetarian,quick">
+      <img src="https://images.pexels.com/photos/1640772/pexels-photo-1640772.jpeg?auto=compress&cs=tinysrgb&w=400" alt="Avocado Toast Supreme" class="recipe-card-image" />
+      <div class="recipe-card-content">
+        <h3 class="recipe-card-title">Avocado Toast Supreme</h3>
+        <p class="recipe-card-description">Elevated avocado toast with perfect seasonings and beautiful presentation.</p>
+        <div class="recipe-meta">
+          <div class="recipe-meta-item">
+            <span>⏱️</span>
+            <span>15 min</span>
+          </div>
+          <div class="recipe-meta-item">
+            <span>👨‍🍳</span>
+            <span>Easy</span>
+          </div>
+          <div class="recipe-meta-item">
+            <span>🍽️</span>
+            <span>2 servings</span>
+          </div>
+        </div>
+        <div class="recipe-tags">
+          <span class="recipe-tag">Vegetarian</span>
+          <span class="recipe-tag">Quick</span>
+          <span class="recipe-tag">Breakfast</span>
+        </div>
+        <a href="/recipes/avocado-toast-supreme/" class="recipe-link">View Recipe →</a>
+      </div>
+    </div>
+
+    <div class="recipe-card" data-time="30" data-difficulty="medium" data-tags="seafood,healthy">
+      <img src="https://images.pexels.com/photos/725991/pexels-photo-725991.jpeg?auto=compress&cs=tinysrgb&w=400" alt="Lemon Herb Salmon" class="recipe-card-image" />
+      <div class="recipe-card-content">
+        <h3 class="recipe-card-title">Lemon Herb Salmon</h3>
+        <p class="recipe-card-description">Perfectly cooked salmon with fresh herbs and bright lemon flavors.</p>
+        <div class="recipe-meta">
+          <div class="recipe-meta-item">
+            <span>⏱️</span>
+            <span>30 min</span>
+          </div>
+          <div class="recipe-meta-item">
+            <span>👨‍🍳</span>
+            <span>Medium</span>
+          </div>
+          <div class="recipe-meta-item">
+            <span>🍽️</span>
+            <span>4 servings</span>
+          </div>
+        </div>
+        <div class="recipe-tags">
+          <span class="recipe-tag">Seafood</span>
+          <span class="recipe-tag">Healthy</span>
+          <span class="recipe-tag">Low-Carb</span>
+        </div>
+        <a href="/recipes/lemon-herb-salmon/" class="recipe-link">View Recipe →</a>
+      </div>
+    </div>
+
+    <div class="recipe-card" data-time="20" data-difficulty="easy" data-tags="vegetarian,pasta">
+      <img src="https://images.pexels.com/photos/1279330/pexels-photo-1279330.jpeg?auto=compress&cs=tinysrgb&w=400" alt="Creamy Mushroom Pasta" class="recipe-card-image" />
+      <div class="recipe-card-content">
+        <h3 class="recipe-card-title">Creamy Mushroom Pasta</h3>
+        <p class="recipe-card-description">Rich and creamy pasta with sautéed mushrooms and fresh herbs.</p>
+        <div class="recipe-meta">
+          <div class="recipe-meta-item">
+            <span>⏱️</span>
+            <span>20 min</span>
+          </div>
+          <div class="recipe-meta-item">
+            <span>👨‍🍳</span>
+            <span>Easy</span>
+          </div>
+          <div class="recipe-meta-item">
+            <span>🍽️</span>
+            <span>4 servings</span>
+          </div>
+        </div>
+        <div class="recipe-tags">
+          <span class="recipe-tag">Vegetarian</span>
+          <span class="recipe-tag">Pasta</span>
+          <span class="recipe-tag">Comfort Food</span>
+        </div>
+        <a href="/recipes/creamy-mushroom-pasta/" class="recipe-link">View Recipe →</a>
+      </div>
+    </div>
+
+    <div class="recipe-card" data-time="60" data-difficulty="hard" data-tags="dessert,special-occasion">
+      <img src="https://images.pexels.com/photos/291528/pexels-photo-291528.jpeg?auto=compress&cs=tinysrgb&w=400" alt="Chocolate Lava Cake" class="recipe-card-image" />
+      <div class="recipe-card-content">
+        <h3 class="recipe-card-title">Chocolate Lava Cake</h3>
+        <p class="recipe-card-description">Decadent individual chocolate cakes with molten centers. Perfect for special occasions.</p>
+        <div class="recipe-meta">
+          <div class="recipe-meta-item">
+            <span>⏱️</span>
+            <span>60 min</span>
+          </div>
+          <div class="recipe-meta-item">
+            <span>👨‍🍳</span>
+            <span>Hard</span>
+          </div>
+          <div class="recipe-meta-item">
+            <span>🍽️</span>
+            <span>6 servings</span>
+          </div>
+        </div>
+        <div class="recipe-tags">
+          <span class="recipe-tag">Dessert</span>
+          <span class="recipe-tag">Special Occasion</span>
+          <span class="recipe-tag">Chocolate</span>
+        </div>
+        <a href="/recipes/chocolate-lava-cake/" class="recipe-link">View Recipe →</a>
+      </div>
+    </div>
+
+    <div class="recipe-card" data-time="35" data-difficulty="medium" data-tags="chicken,healthy">
+      <img src="https://images.pexels.com/photos/2338407/pexels-photo-2338407.jpeg?auto=compress&cs=tinysrgb&w=400" alt="Herb-Crusted Chicken" class="recipe-card-image" />
+      <div class="recipe-card-content">
+        <h3 class="recipe-card-title">Herb-Crusted Chicken</h3>
+        <p class="recipe-card-description">Juicy chicken breast with a flavorful herb crust and roasted vegetables.</p>
+        <div class="recipe-meta">
+          <div class="recipe-meta-item">
+            <span>⏱️</span>
+            <span>35 min</span>
+          </div>
+          <div class="recipe-meta-item">
+            <span>👨‍🍳</span>
+            <span>Medium</span>
+          </div>
+          <div class="recipe-meta-item">
+            <span>🍽️</span>
+            <span>4 servings</span>
+          </div>
+        </div>
+        <div class="recipe-tags">
+          <span class="recipe-tag">Chicken</span>
+          <span class="recipe-tag">Healthy</span>
+          <span class="recipe-tag">Protein</span>
+        </div>
+        <a href="/recipes/herb-crusted-chicken/" class="recipe-link">View Recipe →</a>
+      </div>
+    </div>
+
+    <div class="recipe-card" data-time="10" data-difficulty="easy" data-tags="vegetarian,vegan,smoothie">
+      <img src="https://images.pexels.com/photos/1092730/pexels-photo-1092730.jpeg?auto=compress&cs=tinysrgb&w=400" alt="Green Power Smoothie" class="recipe-card-image" />
+      <div class="recipe-card-content">
+        <h3 class="recipe-card-title">Green Power Smoothie</h3>
+        <p class="recipe-card-description">Nutrient-packed green smoothie with spinach, banana, and tropical fruits.</p>
+        <div class="recipe-meta">
+          <div class="recipe-meta-item">
+            <span>⏱️</span>
+            <span>10 min</span>
+          </div>
+          <div class="recipe-meta-item">
+            <span>👨‍🍳</span>
+            <span>Easy</span>
+          </div>
+          <div class="recipe-meta-item">
+            <span>🍽️</span>
+            <span>2 servings</span>
+          </div>
+        </div>
+        <div class="recipe-tags">
+          <span class="recipe-tag">Vegan</span>
+          <span class="recipe-tag">Healthy</span>
+          <span class="recipe-tag">Smoothie</span>
+        </div>
+        <a href="/recipes/green-power-smoothie/" class="recipe-link">View Recipe →</a>
+      </div>
+    </div>
+
+    <div class="recipe-card" data-time="40" data-difficulty="medium" data-tags="vegetarian,italian">
+      <img src="https://images.pexels.com/photos/315755/pexels-photo-315755.jpeg?auto=compress&cs=tinysrgb&w=400" alt="Margherita Pizza" class="recipe-card-image" />
+      <div class="recipe-card-content">
+        <h3 class="recipe-card-title">Homemade Margherita Pizza</h3>
+        <p class="recipe-card-description">Classic Italian pizza with fresh mozzarella, basil, and homemade dough.</p>
+        <div class="recipe-meta">
+          <div class="recipe-meta-item">
+            <span>⏱️</span>
+            <span>40 min</span>
+          </div>
+          <div class="recipe-meta-item">
+            <span>👨‍🍳</span>
+            <span>Medium</span>
+          </div>
+          <div class="recipe-meta-item">
+            <span>🍽️</span>
+            <span>4 servings</span>
+          </div>
+        </div>
+        <div class="recipe-tags">
+          <span class="recipe-tag">Vegetarian</span>
+          <span class="recipe-tag">Italian</span>
+          <span class="recipe-tag">Pizza</span>
+        </div>
+        <a href="/recipes/margherita-pizza/" class="recipe-link">View Recipe →</a>
+      </div>
+    </div>
+
+    <div class="recipe-card" data-time="25" data-difficulty="easy" data-tags="asian,stir-fry">
+      <img src="https://images.pexels.com/photos/2456435/pexels-photo-2456435.jpeg?auto=compress&cs=tinysrgb&w=400" alt="Vegetable Stir Fry" class="recipe-card-image" />
+      <div class="recipe-card-content">
+        <h3 class="recipe-card-title">Rainbow Vegetable Stir Fry</h3>
+        <p class="recipe-card-description">Colorful mix of fresh vegetables in a savory Asian-inspired sauce.</p>
+        <div class="recipe-meta">
+          <div class="recipe-meta-item">
+            <span>⏱️</span>
+            <span>25 min</span>
+          </div>
+          <div class="recipe-meta-item">
+            <span>👨‍🍳</span>
+            <span>Easy</span>
+          </div>
+          <div class="recipe-meta-item">
+            <span>🍽️</span>
+            <span>4 servings</span>
+          </div>
+        </div>
+        <div class="recipe-tags">
+          <span class="recipe-tag">Vegetarian</span>
+          <span class="recipe-tag">Asian</span>
+          <span class="recipe-tag">Stir Fry</span>
+        </div>
+        <a href="/recipes/rainbow-vegetable-stir-fry/" class="recipe-link">View Recipe →</a>
+      </div>
+    </div>
+
+    <div class="recipe-card" data-time="50" data-difficulty="medium" data-tags="soup,comfort-food">
+      <img src="https://images.pexels.com/photos/539451/pexels-photo-539451.jpeg?auto=compress&cs=tinysrgb&w=400" alt="Tomato Basil Soup" class="recipe-card-image" />
+      <div class="recipe-card-content">
+        <h3 class="recipe-card-title">Creamy Tomato Basil Soup</h3>
+        <p class="recipe-card-description">Rich and creamy tomato soup with fresh basil and a hint of cream.</p>
+        <div class="recipe-meta">
+          <div class="recipe-meta-item">
+            <span>⏱️</span>
+            <span>50 min</span>
+          </div>
+          <div class="recipe-meta-item">
+            <span>👨‍🍳</span>
+            <span>Medium</span>
+          </div>
+          <div class="recipe-meta-item">
+            <span>🍽️</span>
+            <span>6 servings</span>
+          </div>
+        </div>
+        <div class="recipe-tags">
+          <span class="recipe-tag">Vegetarian</span>
+          <span class="recipe-tag">Soup</span>
+          <span class="recipe-tag">Comfort Food</span>
+        </div>
+        <a href="/recipes/creamy-tomato-basil-soup/" class="recipe-link">View Recipe →</a>
+      </div>
+    </div>
+
+    <div class="recipe-card" data-time="15" data-difficulty="easy" data-tags="breakfast,healthy">
+      <img src="https://images.pexels.com/photos/376464/pexels-photo-376464.jpeg?auto=compress&cs=tinysrgb&w=400" alt="Overnight Oats" class="recipe-card-image" />
+      <div class="recipe-card-content">
+        <h3 class="recipe-card-title">Berry Overnight Oats</h3>
+        <p class="recipe-card-description">Make-ahead breakfast with oats, berries, and creamy yogurt.</p>
+        <div class="recipe-meta">
+          <div class="recipe-meta-item">
+            <span>⏱️</span>
+            <span>15 min</span>
+          </div>
+          <div class="recipe-meta-item">
+            <span>👨‍🍳</span>
+            <span>Easy</span>
+          </div>
+          <div class="recipe-meta-item">
+            <span>🍽️</span>
+            <span>2 servings</span>
+          </div>
+        </div>
+        <div class="recipe-tags">
+          <span class="recipe-tag">Breakfast</span>
+          <span class="recipe-tag">Healthy</span>
+          <span class="recipe-tag">Make-Ahead</span>
+        </div>
+        <a href="/recipes/berry-overnight-oats/" class="recipe-link">View Recipe →</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
+  .recipe-link {
+    display: inline-block;
+    margin-top: 1rem;
+    color: var(--sl-color-accent);
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.2s ease;
+  }
+  
+  .recipe-link:hover {
+    color: var(--sl-color-accent-high);
+  }
+  
+  .results-count {
+    margin: 1rem 0;
+    color: var(--sl-color-gray-2);
+    font-size: 0.9rem;
+  }
+</style>
+
+<script>
+  // Recipe filtering functionality
+  document.addEventListener('DOMContentLoaded', function() {
+    const searchInput = document.getElementById('search');
+    const timeSelect = document.getElementById('time');
+    const difficultySelect = document.getElementById('difficulty');
+    const filterTags = document.querySelectorAll('.filter-tag');
+    const recipeCards = document.querySelectorAll('.recipe-card');
+    const resultsCount = document.getElementById('results-count');
+    
+    let activeFilters = new Set();
+    
+    // Search functionality
+    searchInput?.addEventListener('input', filterRecipes);
+    timeSelect?.addEventListener('change', filterRecipes);
+    difficultySelect?.addEventListener('change', filterRecipes);
+    
+    // Tag filtering
+    filterTags.forEach(tag => {
+      tag.addEventListener('click', function() {
+        const filter = this.dataset.filter;
+        
+        if (this.classList.contains('active')) {
+          this.classList.remove('active');
+          activeFilters.delete(filter);
+        } else {
+          this.classList.add('active');
+          activeFilters.add(filter);
+        }
+        
+        filterRecipes();
+      });
+    });
+    
+    function filterRecipes() {
+      const searchTerm = searchInput?.value.toLowerCase() || '';
+      const maxTime = timeSelect?.value || '';
+      const difficulty = difficultySelect?.value || '';
+      
+      let visibleCount = 0;
+      
+      recipeCards.forEach(card => {
+        const title = card.querySelector('.recipe-card-title')?.textContent.toLowerCase() || '';
+        const description = card.querySelector('.recipe-card-description')?.textContent.toLowerCase() || '';
+        const cardTime = parseInt(card.dataset.time) || 0;
+        const cardDifficulty = card.dataset.difficulty || '';
+        const cardTags = card.dataset.tags?.split(',') || [];
+        
+        let show = true;
+        
+        // Search filter
+        if (searchTerm && !title.includes(searchTerm) && !description.includes(searchTerm)) {
+          show = false;
+        }
+        
+        // Time filter
+        if (maxTime && cardTime > parseInt(maxTime)) {
+          show = false;
+        }
+        
+        // Difficulty filter
+        if (difficulty && cardDifficulty !== difficulty) {
+          show = false;
+        }
+        
+        // Tag filters
+        if (activeFilters.size > 0) {
+          const hasActiveTag = Array.from(activeFilters).some(filter => 
+            cardTags.includes(filter)
+          );
+          if (!hasActiveTag) {
+            show = false;
+          }
+        }
+        
+        if (show) {
+          card.style.display = 'block';
+          visibleCount++;
+        } else {
+          card.style.display = 'none';
+        }
+      });
+      
+      if (resultsCount) {
+        resultsCount.textContent = visibleCount;
+      }
+    }
+    
+    // Initial count
+    if (resultsCount) {
+      resultsCount.textContent = recipeCards.length;
+    }
+  });
+</script>
