@@ -44,43 +44,6 @@ export default defineConfig({
 					translations: {
 						fr: 'Recettes',
 					},
-					items: [
-						{ 
-							label: 'All Recipes', 
-							slug: 'recipes',
-							translations: {
-								fr: 'Toutes les recettes',
-							},
-						},
-						{ 
-							label: 'Appetizers', 
-							slug: 'recipes/appetizers',
-							translations: {
-								fr: 'Entrées',
-							},
-						},
-						{ 
-							label: 'Main Courses', 
-							slug: 'recipes/main-courses',
-							translations: {
-								fr: 'Plats principaux',
-							},
-						},
-						{ 
-							label: 'Desserts', 
-							slug: 'recipes/desserts',
-							translations: {
-								fr: 'Desserts',
-							},
-						},
-						{ 
-							label: 'Beverages', 
-							slug: 'recipes/beverages',
-							translations: {
-								fr: 'Boissons',
-							},
-						},
-					],
 				},
 				{
 					label: 'Categories',
