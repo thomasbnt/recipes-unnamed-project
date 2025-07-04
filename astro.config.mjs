@@ -32,13 +32,6 @@ export default defineConfig({
 						fr: 'Commencer',
 					},
 					items: [
-						{ 
-							label: 'How to Use', 
-							slug: 'guides/how-to-use',
-							translations: {
-								fr: 'Comment utiliser',
-							},
-						},
 					],
 				},
 				{
