@@ -31,6 +31,7 @@ export default defineConfig({
 					translations: {
 						fr: 'Commencer',
 					},
+					autogenerate: { directory: 'getting-started' },
 				},
 				{
 					label: 'Guides',
@@ -44,42 +45,14 @@ export default defineConfig({
 					translations: {
 						fr: 'Recettes',
 					},
+					autogenerate: { directory: 'recipes' },
 				},
 				{
 					label: 'Categories',
 					translations: {
 						fr: 'Catégories',
 					},
-					items: [
-						{ 
-							label: 'Quick & Easy', 
-							slug: 'categories/quick-easy',
-							translations: {
-								fr: 'Rapide et facile',
-							},
-						},
-						{ 
-							label: 'Vegetarian', 
-							slug: 'categories/vegetarian',
-							translations: {
-								fr: 'Végétarien',
-							},
-						},
-						{ 
-							label: 'Gluten-Free', 
-							slug: 'categories/gluten-free',
-							translations: {
-								fr: 'Sans gluten',
-							},
-						},
-						{ 
-							label: 'Healthy', 
-							slug: 'categories/healthy',
-							translations: {
-								fr: 'Sain',
-							},
-						},
-					],
+					autogenerate: { directory: 'categories' },
 				},
 				{
 					label: 'Reference',
