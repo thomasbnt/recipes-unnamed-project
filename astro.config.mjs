@@ -35,6 +35,13 @@ export default defineConfig({
 					],
 				},
 				{
+					label: 'Guides',
+					translations: {
+						fr: 'Guides',
+					},
+					autogenerate: { directory: 'guides' },
+				},
+				{
 					label: 'Recipes',
 					translations: {
 						fr: 'Recettes',
