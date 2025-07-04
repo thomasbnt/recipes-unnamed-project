@@ -31,8 +31,6 @@ export default defineConfig({
 					translations: {
 						fr: 'Commencer',
 					},
-					items: [
-					],
 				},
 				{
 					label: 'Guides',
