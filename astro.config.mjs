@@ -34,13 +34,6 @@ export default defineConfig({
 					},
 					items: [
 						{ 
-							label: 'Welcome', 
-							slug: 'welcome',
-							translations: {
-								fr: 'Bienvenue',
-							},
-						},
-						{ 
 							label: 'How to Use', 
 							slug: 'guides/how-to-use',
 							translations: {
